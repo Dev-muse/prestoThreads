@@ -4,10 +4,14 @@ import Button from '../button/button';
 import './sign-in-form.scss';
 
 
-import {signInWithGooglePopup,createUserDocumentFromAuth,
-    signInAuthUserWithEmailAndPassword} from '../../utils/firebase/firebase.utils';
+import
+ {signInWithGooglePopup,
+  createUserDocumentFromAuth,
+  signInAuthUserWithEmailAndPassword} 
+    from '../../utils/firebase/firebase.utils';
+    
 const defaultFormFields = {
-     email:"",
+    email:"",
     password: "",
  }
 

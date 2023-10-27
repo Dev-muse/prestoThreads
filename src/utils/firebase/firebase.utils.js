@@ -40,7 +40,7 @@ export const signInWithGooglePopup = ()=>signInWithPopup(auth, googleProvider);
 // sign in with redirect
 export const signInWithGoogleRedirect = ()=>signInWithRedirect(auth, googleProvider);
 
-
+// initialise firestore database
 export const db = getFirestore();
 
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) =>{
