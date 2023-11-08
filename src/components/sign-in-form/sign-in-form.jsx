@@ -3,7 +3,7 @@ import FormInput from '../form-input/form-input';
 import Button from '../button/button';
 import './sign-in-form.scss';
 
-
+ 
 import
  {signInWithGooglePopup,
   createUserDocumentFromAuth,
@@ -17,8 +17,10 @@ const defaultFormFields = {
 
 const SignInForm = () => {
     const [formFields,setFormFields] = useState(defaultFormFields);
-    const { email,password   } = formFields;
+    const { email,password} = formFields;
     
+  
+
     // reset form fields
     const resetFormFields = ()=>{
         setFormFields(defaultFormFields)
@@ -28,9 +30,8 @@ const SignInForm = () => {
     
     // popup method to create user document in db
     let signInWithGoogle = async()=>{
-        const {user} = await signInWithGooglePopup();
-      
-        await createUserDocumentFromAuth(user)
+        signInWithGooglePopup();
+        
     }
  
 
@@ -48,8 +49,8 @@ const SignInForm = () => {
        
     
        try{
-        const response = await signInAuthUserWithEmailAndPassword(email,password)
-        resetFormFields()
+        const {user} = await signInAuthUserWithEmailAndPassword(email,password);
+         resetFormFields();
 
        }
        catch(error){

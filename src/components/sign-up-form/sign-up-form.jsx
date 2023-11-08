@@ -3,8 +3,12 @@ import FormInput from '../form-input/form-input';
 import Button from '../button/button';
 import './sign-up-form.scss';
 
-
-import {createAuthUserWithEmailAndPassword,createUserDocumentFromAuth} from '../../utils/firebase/firebase.utils';
+ 
+import
+ {createAuthUserWithEmailAndPassword,
+ createUserDocumentFromAuth}
+ from 
+ '../../utils/firebase/firebase.utils';
 const defaultFormFields = {
     displayName :"",
     email:"",
@@ -15,7 +19,9 @@ const defaultFormFields = {
 const SignUpForm = () => {
     const [formFields,setFormFields] = useState(defaultFormFields);
     const {displayName, email,password , confirmPassword} = formFields;
-    
+ 
+
+
     // reset form fields
     const resetFormFields = ()=>{
         setFormFields(defaultFormFields)
@@ -31,12 +37,15 @@ const SignUpForm = () => {
         event.preventDefault(); 
        if(password !== confirmPassword){
         alert("passwords do not match");
+        resetFormFields()
         return
        }
     
        try{
         // get user auth object from firebase for email/pass
         const {user} = await createAuthUserWithEmailAndPassword(email,password);
+
+         
         // then create user doc in database + additional information for missing displayName
         await createUserDocumentFromAuth(user, {displayName})
         resetFormFields()

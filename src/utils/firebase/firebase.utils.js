@@ -6,7 +6,7 @@ import {
     signInWithRedirect, 
     signInWithEmailAndPassword,
     signInWithPopup,
-    GoogleAuthProvider,} from 'firebase/auth';
+    GoogleAuthProvider,signOut,onAuthStateChanged} from 'firebase/auth';
 
 import {getFirestore , doc , getDoc, setDoc} from 'firebase/firestore';
 
@@ -75,7 +75,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
       
     }
 
-    // if data exists ,return userdocref
+    // if data exists ,return userDocRef
     return userDocRef;
 
 
@@ -92,6 +92,13 @@ export const createAuthUserWithEmailAndPassword = async (email , password)=>{
   }
 }
 
+//sign out method 
+
+export const signOutUser = async ()=> await signOut(auth)
+
+// observer listener for auth change, calls callback anytime auth state changed 
+//e.g sign in /out
+export const onAuthStateChangedListener = (callback)=> onAuthStateChanged(auth,callback)
 
 // helper function sign in existing user
 export const signInAuthUserWithEmailAndPassword = async (email , password)=>{
