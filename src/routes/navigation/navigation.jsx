@@ -2,7 +2,13 @@ import {Outlet,Link} from 'react-router-dom';
 import {Fragment,useContext} from 'react';
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 
- import { UserContext } from '../../context/user.context';
+import CartIcon from '../../components/cart-icon/cart-icon';
+import CartDropdown from '../../components/cart-dropdown/cart-dropdown';
+
+import { UserContext } from '../../context/user.context';
+import {CartContext} from '../../context/cart.context';
+
+
 //assets
 import  ShopLogo from '../../assets/logo.svg';
 import './navigation.scss';
@@ -11,6 +17,8 @@ import './navigation.scss';
 const Navigation = ()=>{
 
   const {currentUser} = useContext(UserContext);
+  const {setIsCartOpen,isCartOpen} = useContext(CartContext);
+ 
 
  return (
       <Fragment>
@@ -23,8 +31,10 @@ const Navigation = ()=>{
                 
                 {currentUser? (<span onClick={signOutUser} className='nav-link'>Sign Out</span>):
                 (<Link to="/auth" className = "nav-link">Sign In</Link>)}
-                
+                              
+                <CartIcon />
             </div>
+            {isCartOpen && <CartDropdown />}
         </div>
         {/* child route elements rendered here: */}
         <Outlet />
