@@ -1,9 +1,9 @@
 import {Routes,Route} from 'react-router-dom';
 import Navigation from './routes/navigation/navigation';
 import Home from './routes/home/home';
-import Authentication from './routes/authentication/authentication';
-import Shop from "./routes/shop/shop";
-import Checkout from "./routes/checkout/Checkout";
+import Authentication from './routes/authentication/authentication.component';
+import Shop from "./routes/shop/shop.component";
+import Checkout from "./routes/checkout/checkout.component";
 
 
   const App = () => {
