@@ -9,19 +9,23 @@ import { CartProvider } from './context/cart.context.jsx';
 
 import App from './App.jsx'
 import './index.scss'
+import { Provider } from 'react-redux';
+import { store } from './store/store.js';
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
    
-   <BrowserRouter>
-    <UserProvider>
-      <CategoriesProvider>
-        <CartProvider>
-          <App />
-        </CartProvider>
-      </CategoriesProvider>     
-    </UserProvider>
-  </BrowserRouter>
+   <Provider store={store}>
+     <BrowserRouter>
+       
+        <CategoriesProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </CategoriesProvider>
+       
+       </BrowserRouter>
+   </Provider>
   
 )

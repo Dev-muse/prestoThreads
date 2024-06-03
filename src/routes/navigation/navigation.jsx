@@ -16,11 +16,15 @@ import { CartContext } from '../../context/cart.context';
 //assets
 import ShopLogo from '../../assets/logo.svg';
 import { NavigationContainer, LogoContainer, NavLinks, NavLink } from './navigation.styles';
-
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from '../../store/user/user.selector';
+ 
 
 const Navigation = () => {
 
-  const { currentUser } = useContext(UserContext);
+  // const { currentUser } = useContext(UserContext);
+
+  const currentUser = useSelector(selectCurrentUser)
   const { isCartOpen } = useContext(CartContext);
 
 

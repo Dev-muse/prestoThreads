@@ -4,6 +4,7 @@ import {USER_ACTION_TYPES } from './user.types'
 
 // action creator
 export const setCurrentUser = (user) => {
-    // this runs the reducer
-    createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user)
-  }
+  // this runs the reducer
+ return createAction(USER_ACTION_TYPES.SET_CURRENT_USER, user);
+}
+ 
