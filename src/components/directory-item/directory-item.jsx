@@ -1,22 +1,26 @@
-import { DirectoryItemContainer, Body, BackgroundImage } from './directory-item.styles.jsx';
 import { useNavigate } from 'react-router-dom';
 
+import {
+  BackgroundImage,
+  Body,
+  DirectoryItemContainer,
+} from './directory-item.styles';
 
-// eslint-disable-next-line react/prop-types
-const DirectoryItem = ({ category: { imageUrl, title, route } }) => {
+const DirectoryItem = ({ category }) => {
+  const { imageUrl, title, route } = category;
   const navigate = useNavigate();
-  const onNavigate = () => navigate(route)
+
+  const onNavigateHandler = () => navigate(route);
 
   return (
-    <DirectoryItemContainer onClick={onNavigate}>
-      <BackgroundImage imageUrl={imageUrl} />
-      <Body >
-        {/*  eslint-disable-next-line react/prop-types */}
-        <h2>{title.toUpperCase()}</h2>
+    <DirectoryItemContainer onClick={onNavigateHandler}>
+      <BackgroundImage imageurl={imageUrl} />
+      <Body>
+        <h2>{title}</h2>
         <p>Shop Now</p>
       </Body>
     </DirectoryItemContainer>
-  )
-}
+  );
+};
 
-export default DirectoryItem
+export default DirectoryItem;
