@@ -24,7 +24,9 @@ const Navigation = () => {
 
   // const { currentUser } = useContext(UserContext);
 
+  // getting user object from redux store with selector
   const currentUser = useSelector(selectCurrentUser)
+
   const { isCartOpen } = useContext(CartContext);
 
 
